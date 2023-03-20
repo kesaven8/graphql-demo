@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @Entity
 public class Book {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     @Enumerated(value = EnumType.STRING)
