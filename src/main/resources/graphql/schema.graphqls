@@ -20,3 +20,7 @@ type Query {
     allBooks : [Book]
     allAuthors : [Author]
 }
+
+type Mutation {
+    createAuthor(name: String,surname:String,age:String):Author
+}

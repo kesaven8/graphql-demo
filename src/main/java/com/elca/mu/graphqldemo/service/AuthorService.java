@@ -22,6 +22,10 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
+    public Author createAuthor(Author author) {
+        return authorRepository.save(author);
+    }
+
     @PostConstruct
     void init() {
         Author authorOne = Author.builder()
