@@ -6,6 +6,8 @@ import graphql.com.google.common.collect.Iterables;
 import graphql.com.google.common.collect.Iterators;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +27,12 @@ public class BookService {
     private final BookRepository bookRepository;
 
     public List<Book> findAllBooks() {
-        return StreamSupport.stream(bookRepository.findAll().spliterator(), false).toList();
+        return bookRepository.findAll();
+    }
+
+    public Page<Book> findAllBooksPaged(int page, int pageSize) {
+        return bookRepository.findAll(PageRequest.of(page, pageSize));
+
     }
 
     @PostConstruct
@@ -36,6 +43,5 @@ public class BookService {
             bookRepository.save(book);
         });
     }
-
 
 }

@@ -18,6 +18,7 @@ enum Rating{
 
 type Query {
     allBooks : [Book]
+    allBooksPaged(page: Int, size: Int): [Book]
     booksById(id:ID) :Book
     allAuthors : [Author]
 }
