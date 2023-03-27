@@ -1,6 +1,7 @@
 package com.elca.mu.graphqldemo.service;
 
 import com.elca.mu.graphqldemo.data.Book;
+import com.elca.mu.graphqldemo.data.BookResponseDto;
 import com.elca.mu.graphqldemo.repository.BookRepository;
 import graphql.com.google.common.collect.Iterables;
 import graphql.com.google.common.collect.Iterators;
@@ -30,8 +31,9 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Page<Book> findAllBooksPaged(int page, int pageSize) {
-        return bookRepository.findAll(PageRequest.of(page, pageSize));
+    public BookResponseDto findAllBooksPaged(int page, int pageSize) {
+        var bookPaged = bookRepository.findAll(PageRequest.of(page, pageSize));
+        return new BookResponseDto(bookPaged.getContent(), bookPaged.getTotalPages(), (int) bookPaged.getTotalElements());
 
     }
 

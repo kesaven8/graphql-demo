@@ -1,6 +1,7 @@
 package com.elca.mu.graphqldemo.controller;
 
 import com.elca.mu.graphqldemo.data.Book;
+import com.elca.mu.graphqldemo.data.BookResponseDto;
 import com.elca.mu.graphqldemo.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -23,7 +24,7 @@ public class BookController {
     }
 
     @QueryMapping
-    public Page<Book> allBooksPaged(@Argument Integer page, @Argument Integer size) {
+    public BookResponseDto allBooksPaged(@Argument Integer page, @Argument Integer size) {
         return bookService.findAllBooksPaged(page, size);
     }
 

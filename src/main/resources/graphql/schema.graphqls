@@ -16,12 +16,18 @@ enum Rating{
     FIVE, FOUR, THREE, TWO, ONE
 }
 
+type BookResponseDto {
+    books: [Book]
+    totalPages: Int
+    totalElements: Int
+}
+
 type Query {
     allBooks : [Book]
-    allBooksPaged(page: Int, size: Int): [Book]
-    booksById(id:ID) :Book
+    allBooksPaged(page: Int, size: Int): BookResponseDto
     allAuthors : [Author]
 }
+
 
 type Mutation {
     createAuthor(name: String,surname:String,age:String):Author

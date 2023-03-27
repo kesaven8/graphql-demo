@@ -9,14 +9,13 @@ jdbc:h2:mem:books
 # Query for pogination
 
 `
-{
-allBooksPaged(page: 2, size: 1) {
-id
-name
-author {
+query {
+allBooksPaged(page :0 , size : 2){
+books{
 name
 }
-rating
+totalPages
+totalElements
 }
 }
 `
