@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class BookController {
@@ -13,7 +15,7 @@ public class BookController {
     private final BookService bookService;
 
     @SchemaMapping(typeName = "Query", value = "allBooks")
-    public Iterable<Book> findAllBooks() {
+    public List<Book> findAllBooks() {
         return bookService.findAllBooks();
     }
 
